@@ -8,5 +8,11 @@ pipeline {
                 sh 'git clone https://github.com/gsgeetha/hello-world-war.git'
             }
         }
+        stage('Build') {
+            steps {
+                echo 'Building the code'
+                sh 'mvn clean package'
+            }
+        }
     }
 }
