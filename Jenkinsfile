@@ -18,5 +18,11 @@ pipeline {
                // sh 'mvn -f "hello-world-war/" clean package'
             }
         }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying to tomcat'
+                sh 'scp hello-world-war/target/hello-world-war-1.0.0.war jenkins@172.31.9.48:/opt/apache-tomcat-10.1.50/webapps/'
+            }
+        }
     }
 }
