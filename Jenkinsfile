@@ -11,6 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the code'
+                sh 'pwd'
                 sh 'ls'
                 sh 'cd hello-world-war/hello-world-war'
                 sh 'ls'
