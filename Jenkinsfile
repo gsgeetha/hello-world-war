@@ -19,7 +19,7 @@ pipeline {
                 //     ls
                 //     mvn clean package
                 // '''
-               sh 'mvn -f "/hello-world-war/" clean package'
+               sh 'mvn -f "hello-world-war/" clean package'
             }
         }
     }
