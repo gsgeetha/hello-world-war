@@ -11,15 +11,11 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the code'
-                // sh '''
-                //     pwd
-                //     ls
-                //     cd hello-world-war
-                //     pwd
-                //     ls
-                //     mvn clean package
-                // '''
-               sh 'mvn -f "hello-world-war/" clean package'
+                sh '''
+                    cd hello-world-war
+                    mvn clean package
+                '''
+               // sh 'mvn -f "hello-world-war/" clean package'
             }
         }
     }
