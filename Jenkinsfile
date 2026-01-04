@@ -11,8 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the code'
-                sh 'pwd'
-                sh 'find . -type f -iname "pom.xml"'
+                sh 'ls'
                 sh 'mvn clean package'
             }
         }
