@@ -13,7 +13,7 @@ pipeline {
                 echo 'Building the code'
                 sh 'pwd'
                 sh 'ls'
-                sh 'cd hello-world-war'
+                sh "cd hello-world-war"
                 sh 'pwd'
                 sh 'ls'
                 sh 'mvn clean package'
