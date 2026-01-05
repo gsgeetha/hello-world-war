@@ -21,7 +21,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying to tomcat'
-                sh 'sudo scp */target/*.war root@172.31.9.48:/opt/tomcat/webapps/'
+                sh '''
+                    scp */target/*.war jenkins@172.31.9.48:/tmp
+                    ssh jenkins@172.31.9.48
+                    sudo mv /tmp/*.war /opt/tomcat/webapps
+                '''
             }
         }
     }
