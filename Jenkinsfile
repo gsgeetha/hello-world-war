@@ -25,6 +25,7 @@ pipeline {
                     scp */target/*.war jenkins@172.31.9.48:/tmp
                     ssh jenkins@172.31.9.48
                     sudo mv /tmp/*.war /opt/tomcat/webapps
+                    sudo /opt/tomcat/bin/startup.sh
                 '''
             }
         }
