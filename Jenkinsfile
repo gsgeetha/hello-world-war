@@ -4,6 +4,7 @@ pipeline {
     agent none
     stages {
         stage('Checkout') {
+            agent { label 'java_node' }
             steps {
                 echo 'Checking out the code'
                 sh 'rm -rf *'
