@@ -1,5 +1,7 @@
 pipeline {
-    agent { label 'java_node' }
+    // agent { label 'java_node' }
+    // agent { label 'slave1' }
+    agent none
     stages {
         stage('Checkout') {
             steps {
