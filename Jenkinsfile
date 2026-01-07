@@ -25,21 +25,7 @@ pipeline {
                 }
             }
         }
-            
-            // stage('Get the tomcat credentials') {
-            //     steps {
-            //     withCredentials([
-            //                         usernamePassword(
-            //                             credentialsId: 'tomcat',
-            //                             usernameVariable: 'USERNAME',
-            //                             passwordVariable: 'PASSWORD'
-            //                         )
-            //                     ]) {
-            //         sh ' echo $USERNAME $PASSWORD'
-            //         }
-            //     }
-            // }
-            stage('Get the git credentials') {
+        stage('Get the credentials') {
                 steps {
                 withCredentials([
                                     usernamePassword(
@@ -54,6 +40,7 @@ pipeline {
                                     )
                                 ]) {
                     sh ' echo $GIT_USERNAME $GIT_TOKEN'
+                    sh ' echo $USERNAME $PASSWORD'
                     }
                 }
             }
