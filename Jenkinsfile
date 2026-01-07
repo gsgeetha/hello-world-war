@@ -11,32 +11,43 @@ pipeline {
     }
     stages {
         parallel {
-            stage('Get the tomcat credentials') {
+            stage('1') {
                 steps {
-                withCredentials([
-                                    usernamePassword(
-                                        credentialsId: 'tomcat',
-                                        usernameVariable: 'USERNAME',
-                                        passwordVariable: 'PASSWORD'
-                                    )
-                                ]) {
-                    sh ' echo $USERNAME $PASSWORD'
-                    }
+                    sh 'echo "stage1"'
                 }
             }
-            stage('Get the git credentials') {
+            stage('2') {
                 steps {
-                withCredentials([
-                                    git(
-                                        credentialsId: 'git_token',
-                                        usernameVariable: 'GIT_USERNAME',
-                                        passwordVariable: 'GIT_TOKEN'
-                                    )
-                                ]) {
-                    sh ' echo $GIT_USERNAME $GIT_TOKEN'
-                    }
+                    sh 'echo "stage2"'
                 }
             }
+            
+            // stage('Get the tomcat credentials') {
+            //     steps {
+            //     withCredentials([
+            //                         usernamePassword(
+            //                             credentialsId: 'tomcat',
+            //                             usernameVariable: 'USERNAME',
+            //                             passwordVariable: 'PASSWORD'
+            //                         )
+            //                     ]) {
+            //         sh ' echo $USERNAME $PASSWORD'
+            //         }
+            //     }
+            // }
+            // stage('Get the git credentials') {
+            //     steps {
+            //     withCredentials([
+            //                         git(
+            //                             credentialsId: 'git_token',
+            //                             usernameVariable: 'GIT_USERNAME',
+            //                             passwordVariable: 'GIT_TOKEN'
+            //                         )
+            //                     ]) {
+            //         sh ' echo $GIT_USERNAME $GIT_TOKEN'
+            //         }
+            //     }
+            // }
         }
     }
 }
