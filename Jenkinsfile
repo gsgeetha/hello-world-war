@@ -14,6 +14,7 @@ pipeline {
             agent { label 'java_node' }
             steps {
                 echo 'Welcome'
+                sh ' echo $CMD $RUN_TESTS $CMD1'
             }
         }
     }
