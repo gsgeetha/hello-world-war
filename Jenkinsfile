@@ -5,7 +5,7 @@ pipeline {
     // agent any 
     
     parameters {
-        string(name: 'env', defaultValue: 'dev', description: 'Target Environent')
+        string(name: 'ENVIRONMENT', defaultValue: 'dev', description: 'Target Environent')
         booleanParam(name: 'RUN_TESTS', defaultValue: false, description: 'Run tests?')
         choice(name: 'MVN_GOAL', choices: ['clean', 'validate', 'compile', 'verify', 'deploy'], description: 'Maven goals')
     }
@@ -46,7 +46,7 @@ pipeline {
                                         credentialsId: 'git_token',
                                         usernameVariable: 'GIT_USERNAME',
                                         passwordVariable: 'GIT_TOKEN'
-                                    )
+                                    ),
                                     usernamePassword(
                                         credentialsId: 'tomcat',
                                         usernameVariable: 'USERNAME',
