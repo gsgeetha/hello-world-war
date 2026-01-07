@@ -42,11 +42,16 @@ pipeline {
             stage('Get the git credentials') {
                 steps {
                 withCredentials([
-                                    gitcreds(
+                                    usernamePassword(
                                         credentialsId: 'git_token',
                                         usernameVariable: 'GIT_USERNAME',
                                         passwordVariable: 'GIT_TOKEN'
                                     )
+                                    // usernamePassword(
+                                    //     credentialsId: 'tomcat',
+                                    //     usernameVariable: 'USERNAME',
+                                    //     passwordVariable: 'PASSWORD'
+                                    // )
                                 ]) {
                     sh ' echo $GIT_USERNAME $GIT_TOKEN'
                     }
