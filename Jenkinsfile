@@ -20,10 +20,11 @@ pipeline {
                                     usernameVariable: 'USERNAME',
                                     passwordVariable: 'PASSWORD'
                                 )
-                            ])
+                            ]) {
                 echo 'Welcome'
                 sh ' echo $CMD $RUN_TESTS $CMD1'
                 sh ' echo $USERNAME $PASSWORD'
+                }
             }
         }
     }
