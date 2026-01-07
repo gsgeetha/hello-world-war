@@ -39,18 +39,18 @@ pipeline {
             //         }
             //     }
             // }
-            // stage('Get the git credentials') {
-            //     steps {
-            //     withCredentials([
-            //                         git(
-            //                             credentialsId: 'git_token',
-            //                             usernameVariable: 'GIT_USERNAME',
-            //                             passwordVariable: 'GIT_TOKEN'
-            //                         )
-            //                     ]) {
-            //         sh ' echo $GIT_USERNAME $GIT_TOKEN'
-            //         }
-            //     }
-            // }
+            stage('Get the git credentials') {
+                steps {
+                withCredentials([
+                                    git(
+                                        credentialsId: 'git_token',
+                                        usernameVariable: 'GIT_USERNAME',
+                                        passwordVariable: 'GIT_TOKEN'
+                                    )
+                                ]) {
+                    sh ' echo $GIT_USERNAME $GIT_TOKEN'
+                    }
+                }
+            }
     }
 }
