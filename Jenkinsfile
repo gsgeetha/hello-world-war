@@ -42,7 +42,7 @@ pipeline {
             stage('Get the git credentials') {
                 steps {
                 withCredentials([
-                                    git(
+                                    gitcreds(
                                         credentialsId: 'git_token',
                                         usernameVariable: 'GIT_USERNAME',
                                         passwordVariable: 'GIT_TOKEN'
