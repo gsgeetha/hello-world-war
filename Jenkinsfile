@@ -5,8 +5,8 @@ pipeline {
     agent any 
     
     parameters {
-        string(name: 'CMD', defaultValue: '', description: 'Command used to run/build application')
-        booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Run tests?')
+        string(name: 'CMD', defaultValue: 'cd', description: 'Command used to run/build application')
+        booleanParam(name: 'RUN_TESTS', defaultValue: false, description: 'Run tests?')
         choice(name: 'CMD1', choices: ['clean', 'validate', 'compile', 'verify', 'deploy'], description: 'Different Maven Commands')
     }
     stages {
