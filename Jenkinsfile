@@ -10,17 +10,20 @@ pipeline {
         choice(name: 'CMD1', choices: ['clean', 'validate', 'compile', 'verify', 'deploy'], description: 'Different Maven Commands')
     }
     stages {
-        parallel {
-            stage('1') {
-                steps {
-                    sh 'echo "stage1"'
+        stage('Parallel stage') {
+            parallel {
+                stage('1') {
+                    steps {
+                        sh 'echo "stage1"'
+                    }
+                }
+                stage('2') {
+                    steps {
+                        sh 'echo "stage2"'
+                    }
                 }
             }
-            stage('2') {
-                steps {
-                    sh 'echo "stage2"'
-                }
-            }
+        }
             
             // stage('Get the tomcat credentials') {
             //     steps {
@@ -48,6 +51,5 @@ pipeline {
             //         }
             //     }
             // }
-        }
     }
 }
