@@ -1,8 +1,8 @@
 pipeline {
     // agent { label 'java_node' }
-    // agent { label 'slave1' }
+    agent { label 'slave1' }
     // agent none
-    agent any 
+    // agent any 
     
     parameters {
         string(name: 'CMD', defaultValue: 'cd', description: 'Command used to run/build application')
@@ -10,20 +10,31 @@ pipeline {
         choice(name: 'CMD1', choices: ['clean', 'validate', 'compile', 'verify', 'deploy'], description: 'Different Maven Commands')
     }
     stages {
-        stage('Welcome') {
-            agent { label 'java_node' }
-            steps {
-                
-            withCredentials([
-                                usernamePassword(
-                                    credentialsId: 'tomcat',
-                                    usernameVariable: 'USERNAME',
-                                    passwordVariable: 'PASSWORD'
-                                )
-                            ]) {
-                echo 'Welcome'
-                sh ' echo $CMD $RUN_TESTS $CMD1'
-                sh ' echo $USERNAME $PASSWORD'
+        parallel {
+            stage('Get the tomcat credentials') {
+                steps {
+                withCredentials([
+                                    usernamePassword(
+                                        credentialsId: 'tomcat',
+                                        usernameVariable: 'USERNAME',
+                                        passwordVariable: 'PASSWORD'
+                                    )
+                                ]) {
+                    sh ' echo $USERNAME $PASSWORD'
+                    }
+                }
+            }
+            stage('Get the git credentials') {
+                steps {
+                withCredentials([
+                                    git(
+                                        credentialsId: 'git_token',
+                                        usernameVariable: 'GIT_USERNAME',
+                                        passwordVariable: 'GIT_TOKEN'
+                                    )
+                                ]) {
+                    sh ' echo $GIT_USERNAME $GIT_TOKEN'
+                    }
                 }
             }
         }
