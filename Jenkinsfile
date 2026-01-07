@@ -47,11 +47,11 @@ pipeline {
                                         usernameVariable: 'GIT_USERNAME',
                                         passwordVariable: 'GIT_TOKEN'
                                     )
-                                    // usernamePassword(
-                                    //     credentialsId: 'tomcat',
-                                    //     usernameVariable: 'USERNAME',
-                                    //     passwordVariable: 'PASSWORD'
-                                    // )
+                                    usernamePassword(
+                                        credentialsId: 'tomcat',
+                                        usernameVariable: 'USERNAME',
+                                        passwordVariable: 'PASSWORD'
+                                    )
                                 ]) {
                     sh ' echo $GIT_USERNAME $GIT_TOKEN'
                     }
