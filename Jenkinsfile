@@ -11,6 +11,11 @@ pipeline {
                 checkoutcode()
             }
         }
+        stage('Setup Maven') {
+            steps {
+                setupmaven()
+            }
+        }
         stage('Build App') {
             steps {
                 buildapp('package')
