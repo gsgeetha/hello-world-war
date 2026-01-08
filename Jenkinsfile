@@ -5,7 +5,9 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                pipelinecode.checkoutcode()
+                script {
+                     pipelinecode.checkoutcode()
+                }
             }
         }
         stage('Setup Maven') {
