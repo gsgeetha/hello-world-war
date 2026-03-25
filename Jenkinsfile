@@ -15,7 +15,7 @@ pipeline {
                 setupmaven()
             }
         }
-        stage('Build App') {
+        stage('Build Image') {
             steps {
                 buildimage()
             }
